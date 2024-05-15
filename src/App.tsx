@@ -1,12 +1,16 @@
 import { Box, styled } from "@mui/material";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import CssBaseline from "@mui/material/CssBaseline";
+import Home from "./components/Home";
 
 const App = () => {
   return (
     <>
+      <CssBaseline />
       <Container>
         <Navbar />
+        <Home />
       </Container>
     </>
   );

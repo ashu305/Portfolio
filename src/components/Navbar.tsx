@@ -4,11 +4,13 @@ import {
   Divider,
   Drawer,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
   styled,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -88,6 +90,11 @@ const Navbar = () => {
             </Drawer>
             <MenuIcon sx={{ fontSize: "2rem" }} onClick={toggleDrawer(true)} />
           </ShowMenuButton>
+          <Stack direction="row">
+            {NavbarHeaders.map((headerDetails, index) => (
+              <CustomHeaderLink>{headerDetails.label}</CustomHeaderLink>
+            ))}
+          </Stack>
         </Box>
         <ContactMeButton>Hit Me Up</ContactMeButton>
       </Container>
@@ -103,14 +110,14 @@ const Container = styled(Box)({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  position: "fixed",
+  position: "static",
   width: "100%",
 });
 
 const ShowMenuButton = styled(IconButton)(({ theme }) => ({
   color: "#FFFFFF",
   margin: "1rem",
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("sm")]: {
     display: "none",
   },
 }));
@@ -128,7 +135,6 @@ const ContactMeButton = styled(Button)(({ theme }) => ({
   transition: "all 0.5s ease",
   ":hover": {
     background: "#1FF2FF",
-    border: "none",
     color: "#000",
     transform: "scale(1.025)",
   },
@@ -139,3 +145,52 @@ const DrawerHeaderContainer = styled(Box)({
   alignItems: "flex-end",
   justifyContent: "flex-end",
 });
+
+const CustomHeaderLink = styled(Link)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+  [theme.breakpoints.between("sm", "md")]: {
+    fontSize: "1.4rem",
+    margin: "0 1.2rem",
+  },
+  [theme.breakpoints.between("md", "lg")]: {
+    fontSize: "1.6rem",
+    margin: "0 1.5rem",
+  },
+  [theme.breakpoints.between("lg", "xl")]: {
+    fontSize: "1.8rem",
+    margin: "0 1.8rem",
+  },
+  [theme.breakpoints.up("xl")]: {
+    fontSize: "1.9rem",
+    margin: "0 2.1rem",
+  },
+  cursor: "pointer",
+  margin: "0 1rem",
+  color: "white",
+  position: "relative",
+  textDecoration: "none",
+  transition: "all 0.5s ease",
+  "&:before": {
+    content: "''",
+    position: "absolute",
+    width: "0",
+    height: "2px",
+    bottom: "-3px",
+    left: "50%",
+    transform: "translate(-50%,0%)",
+    backgroundColor: "#1FF2FF",
+    visibility: "hidden",
+    transition: "all 0.3s ease-in-out",
+  },
+  "&:hover:before": {
+    visibility: "visible",
+    width: "100%",
+  },
+  "&:hover": {
+    color: "#1FF2FF",
+    transformOrigin: "bottom left",
+    transform: "scaleX(1.1) translate(-5%,0%)",
+  },
+}));
