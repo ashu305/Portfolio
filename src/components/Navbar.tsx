@@ -112,6 +112,7 @@ const Container = styled(Box)({
   alignItems: "center",
   position: "static",
   width: "100%",
+  height: "10%",
 });
 
 const ShowMenuButton = styled(IconButton)(({ theme }) => ({
