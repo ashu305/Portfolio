@@ -5,8 +5,8 @@ import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import { navBarHeadersInterface } from "../Interfaces/AppInterfaces";
 
 export const NavbarHeaders: navBarHeadersInterface[] = [
-  { label: "Home", icon: HomeIcon },
-  { label: "About", icon: InfoIcon },
-  { label: "Portfolio", icon: WorkOutlineIcon },
-  { label: "Resume", icon: DocumentScannerIcon },
+  { label: "Home", icon: HomeIcon, color: "#fff" },
+  { label: "About", icon: InfoIcon, color: "#fff" },
+  { label: "Portfolio", icon: WorkOutlineIcon, color: "#fff" },
+  { label: "Resume", icon: DocumentScannerIcon, color: "#fff" },
 ];

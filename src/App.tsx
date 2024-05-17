@@ -3,14 +3,24 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./components/Home";
+import About from "./components/About";
+import { useInView } from "react-intersection-observer";
 
 const App = () => {
+  const { ref: homeRef, inView: homeComponentInView } = useInView({
+    threshold: [0.1],
+  });
+  const { ref: aboutRef, inView: aboutComponentInView } = useInView({
+    threshold: [0.8],
+  });
+
   return (
     <>
       <CssBaseline />
+      <Navbar homeComponentInView={homeComponentInView} />
       <Container>
-        <Navbar />
-        <Home />
+        <Home homeRef={homeRef} />
+        <About aboutRef={aboutRef} />
       </Container>
     </>
   );

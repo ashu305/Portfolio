@@ -1,10 +1,15 @@
 import { Box, Typography, styled } from "@mui/material";
 import { TypeAnimation } from "react-type-animation";
+import Image from "../assets/HeroBackground.png";
+import React, { Ref } from "react";
 
-const Home = () => {
+interface Props {
+  homeRef: Ref<HTMLButtonElement>;
+}
+const Home: React.FC<Props> = ({ homeRef }) => {
   return (
     <>
-      <Container>
+      <Container ref={homeRef}>
         <CustomMessageContainer>
           <CustomTextStyle variant="h1">
             Hey, I am <CustomNameText variant="h3">Ashutoh Sharma</CustomNameText>
@@ -46,6 +51,7 @@ const Container = styled(Box)(({ theme }) => ({
   },
   height: "90%",
   display: "flex",
+  backgroundImage: `url(${Image})`,
 }));
 
 const CustomMessageContainer = styled(Box)(({ theme }) => ({

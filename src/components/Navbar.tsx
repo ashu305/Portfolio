@@ -15,11 +15,26 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import React from "react";
+import React, { useEffect } from "react";
 import { NavbarHeaders } from "../Constants/AppConstants";
 
-const Navbar = () => {
+interface Props {
+  homeComponentInView: boolean;
+}
+
+const Navbar: React.FC<Props> = ({ homeComponentInView }) => {
   const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    const setNavbarHeadersColors = () => {
+      if (homeComponentInView) {
+        const newData = NavbarHeaders.find((obj) => obj.label === "Home");
+        if (newData) {
+          newData.color = "#1FF2FF";
+        }
+      }
+    };
+    setNavbarHeadersColors();
+  }, []);
 
   const toggleDrawer = (openInstruction: boolean) => () => {
     setOpen(openInstruction);
@@ -80,7 +95,12 @@ const Navbar = () => {
 
   return (
     <>
-      <Container>
+      <Container
+        sx={{
+          backgroundColor: !homeComponentInView ? "#04272F" : "transparent",
+          transition: "all 0.2s ease",
+        }}
+      >
         <Box>
           <ShowMenuButton>
             <Drawer open={open} onClick={toggleDrawer(false)}>
@@ -92,7 +112,9 @@ const Navbar = () => {
           </ShowMenuButton>
           <Stack direction="row">
             {NavbarHeaders.map((headerDetails, index) => (
-              <CustomHeaderLink>{headerDetails.label}</CustomHeaderLink>
+              <CustomHeaderLink sx={{ color: headerDetails.color }}>
+                {headerDetails.label}
+              </CustomHeaderLink>
             ))}
           </Stack>
         </Box>
@@ -110,7 +132,7 @@ const Container = styled(Box)({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  position: "static",
+  position: "fixed",
   width: "100%",
   height: "10%",
 });
