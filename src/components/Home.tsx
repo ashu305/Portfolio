@@ -52,10 +52,11 @@ const Container = styled(Box)(({ theme }) => ({
   height: "90%",
   display: "flex",
   backgroundImage: `url(${Image})`,
+  minHeight: "100vh",
 }));
 
 const CustomMessageContainer = styled(Box)(({ theme }) => ({
-  marginTop: "9rem",
+  marginTop: "15rem",
 }));
 
 const CustomTextStyle = styled(Typography)(({ theme }) => ({

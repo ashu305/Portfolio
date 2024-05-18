@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import React, { useEffect } from "react";
+import React from "react";
 import { NavbarHeaders } from "../Constants/AppConstants";
 
 interface Props {
@@ -24,17 +24,6 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ homeComponentInView }) => {
   const [open, setOpen] = React.useState(false);
-  useEffect(() => {
-    const setNavbarHeadersColors = () => {
-      if (homeComponentInView) {
-        const newData = NavbarHeaders.find((obj) => obj.label === "Home");
-        if (newData) {
-          newData.color = "#1FF2FF";
-        }
-      }
-    };
-    setNavbarHeadersColors();
-  }, []);
 
   const toggleDrawer = (openInstruction: boolean) => () => {
     setOpen(openInstruction);
@@ -135,6 +124,7 @@ const Container = styled(Box)({
   position: "fixed",
   width: "100%",
   height: "10%",
+  backdropFilter: "blur(5px)",
 });
 
 const ShowMenuButton = styled(IconButton)(({ theme }) => ({
@@ -174,7 +164,7 @@ const CustomHeaderLink = styled(Link)(({ theme }) => ({
     display: "none",
   },
   [theme.breakpoints.between("sm", "md")]: {
-    fontSize: "1.4rem",
+    fontSize: "1.3rem",
     margin: "0 1.2rem",
   },
   [theme.breakpoints.between("md", "lg")]: {

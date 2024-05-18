@@ -17,8 +17,8 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Navbar homeComponentInView={homeComponentInView} />
       <Container>
+        <Navbar homeComponentInView={homeComponentInView} />
         <Home homeRef={homeRef} />
         <About aboutRef={aboutRef} />
       </Container>
@@ -30,5 +30,6 @@ export default App;
 
 const Container = styled(Box)({
   width: "100%",
-  height: "100vh",
+  height: "100%",
+  background: "#f6f5f5",
 });
