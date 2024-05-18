@@ -125,6 +125,7 @@ const Container = styled(Box)({
   width: "100%",
   height: "10%",
   backdropFilter: "blur(5px)",
+  zIndex: 99,
 });
 
 const ShowMenuButton = styled(IconButton)(({ theme }) => ({

@@ -18,6 +18,9 @@ export { PageHeaderText };
 
 // CSS
 const CustomPageHeaderContainer = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "3rem",
+  },
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

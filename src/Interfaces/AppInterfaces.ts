@@ -6,3 +6,12 @@ export interface navBarHeadersInterface {
   icon: React.ElementType<SvgIconProps>;
   color: string;
 }
+
+interface Skills {
+  name: string;
+  icon?: React.ElementType<SvgIconProps>;
+}
+export interface AboutDetailsInterface {
+  bio: string;
+  skills: Skills[];
+}
